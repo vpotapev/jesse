@@ -293,6 +293,9 @@ combine_id(Id, RefBin) ->
     %% Absolute file:
     {error, {no_default_port, file, Ref}} ->
       Ref;
+    %% handle 'no_scheme' case
+    {error, no_scheme} ->
+      Ref;
     %% Relative
     _ ->
       combine_relative_id(Id, Ref)
